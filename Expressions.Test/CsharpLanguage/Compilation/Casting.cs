@@ -57,10 +57,12 @@ namespace Expressions.Test.CsharpLanguage.Compilation
         }
 
         [Test]
-        [ExpectedException]
         public void CastWithBuiltInString()
         {
-            Resolve("(string)7");
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve("(string)7");
+            });
         }
 
         [Test]

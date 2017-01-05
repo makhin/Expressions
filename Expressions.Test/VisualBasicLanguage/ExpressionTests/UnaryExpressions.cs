@@ -32,21 +32,25 @@ namespace Expressions.Test.VisualBasicLanguage.ExpressionTests
         }
 
         [Test]
-        [ExpectedException]
         public void IllegalUnaryPlus()
         {
-            Resolve(
-                "+\"\""
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    "+\"\""
+                );
+            });
         }
 
         [Test]
-        [ExpectedException]
         public void IllegalUnaryMinus()
         {
-            Resolve(
-                "-\"\""
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    "-\"\""
+                );
+            });
         }
 
         [Test]
@@ -63,12 +67,14 @@ namespace Expressions.Test.VisualBasicLanguage.ExpressionTests
         }
 
         [Test]
-        [ExpectedException]
         public void IllegalUnaryNot()
         {
-            Resolve(
-                "not \"\""
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    "not \"\""
+                );
+            });
         }
     }
 }

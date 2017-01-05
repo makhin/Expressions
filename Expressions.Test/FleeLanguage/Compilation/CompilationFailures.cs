@@ -9,10 +9,13 @@ namespace Expressions.Test.FleeLanguage.Compilation
     internal class CompilationFailures : TestBase
     {
         [Test]
-        [ExpectedException]
         public void InfiniteLoop()
         {
-            Resolve("true && false");
+            Assert.Throws(typeof(ExpressionsException), delegate
+                {
+                    Resolve("true && false");
+                }
+            );
         }
     }
 }

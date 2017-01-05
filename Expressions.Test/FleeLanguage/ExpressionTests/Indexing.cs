@@ -69,33 +69,39 @@ namespace Expressions.Test.FleeLanguage.ExpressionTests
         }
 
         [Test]
-        [ExpectedException]
         public void UnresolvedIndexWithOverload()
         {
-            Resolve(
-                new ExpressionContext(null, new Owner()),
-                "DualCollection[1.7]"
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    new ExpressionContext(null, new Owner()),
+                    "DualCollection[1.7]"
+                );
+            });
         }
 
         [Test]
-        [ExpectedException]
         public void CannotIndexArrayWithDouble()
         {
-            Resolve(
-                new ExpressionContext(null, new Owner()),
-                "SimpleArray[1.7]"
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    new ExpressionContext(null, new Owner()),
+                    "SimpleArray[1.7]"
+                );
+            });
         }
 
         [Test]
-        [ExpectedException]
         public void NoIndexer()
         {
-            Resolve(
-                new ExpressionContext(null, new Owner()),
-                "Value[0]"
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    new ExpressionContext(null, new Owner()),
+                    "Value[0]"
+                );
+            });
         }
 
         [Test]
@@ -139,13 +145,15 @@ namespace Expressions.Test.FleeLanguage.ExpressionTests
         }
 
         [Test]
-        [ExpectedException]
         public void IllegalRank()
         {
-            Resolve(
-                new ExpressionContext(null, new Owner()),
-                "RankedArray[0,0,0]"
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    new ExpressionContext(null, new Owner()),
+                    "RankedArray[0,0,0]"
+                );
+            });
         }
 
         public class Owner

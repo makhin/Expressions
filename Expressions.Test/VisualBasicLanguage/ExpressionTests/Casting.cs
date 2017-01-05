@@ -123,12 +123,14 @@ namespace Expressions.Test.VisualBasicLanguage.ExpressionTests
         }
 
         [Test]
-        [ExpectedException]
         public void CastingToUnknownType()
         {
-            Resolve(
-                "ctype(nothing, Unknown.Type)"
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    "ctype(nothing, Unknown.Type)"
+                );
+            });
         }
 
         [Test]

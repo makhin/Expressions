@@ -123,12 +123,14 @@ namespace Expressions.Test.FleeLanguage.ExpressionTests
         }
 
         [Test]
-        [ExpectedException]
         public void CastingToUnknownType()
         {
-            Resolve(
-                "cast(null, Unknown.Type)"
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    "cast(null, Unknown.Type)"
+                );
+            });
         }
     }
 }

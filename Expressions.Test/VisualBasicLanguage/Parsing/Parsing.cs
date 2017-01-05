@@ -17,12 +17,14 @@ namespace Expressions.Test.VisualBasicLanguage.Parsing
         }
 
         [Test]
-        [ExpectedException]
         public void InvalidSyntaxCheck()
         {
-            DynamicExpression.CheckSyntax(
-                "?", ExpressionLanguage.VisualBasic
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                DynamicExpression.CheckSyntax(
+                    "?", ExpressionLanguage.VisualBasic
+                );
+            });
         }
     }
 }

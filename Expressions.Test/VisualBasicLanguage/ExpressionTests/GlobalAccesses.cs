@@ -143,13 +143,15 @@ namespace Expressions.Test.VisualBasicLanguage.ExpressionTests
         }
 
         [Test]
-        [ExpectedException]
         public void CannotCallInstanceOnImport()
         {
-            Resolve(
-                new ExpressionContext(new[] { new Import(typeof(Owner)) }),
-                "IntProperty"
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    new ExpressionContext(new[] {new Import(typeof(Owner))}),
+                    "IntProperty"
+                );
+            });
         }
 
         public class Owner

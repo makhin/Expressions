@@ -57,10 +57,12 @@ namespace Expressions.Test.VisualBasicLanguage.Compilation
         }
 
         [Test]
-        [ExpectedException]
         public void CastWithBuiltInString()
         {
-            Resolve("ctype(7, string)");
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve("ctype(7, string)");
+            });
         }
 
         [Test]

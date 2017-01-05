@@ -61,13 +61,15 @@ namespace Expressions.Test.CsharpLanguage.ExpressionTests
         }
 
         [Test]
-        [ExpectedException]
         public void MethodWithIllegalOverload()
         {
-            Resolve(
-                new ExpressionContext(null, new Owner()),
-                "MethodWithOverload(1.7)"
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    new ExpressionContext(null, new Owner()),
+                    "MethodWithOverload(1.7)"
+                );
+            });
         }
 
         [Test]

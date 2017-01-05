@@ -439,13 +439,15 @@ namespace Expressions.Test.FleeLanguage
         }
 
         [Test(Description = "We should not allow access to the non-public members of a variable")]
-        [ExpectedException(typeof(ExpressionsException))]
         public void TestNonPublicVariableMemberAccess()
         {
             ExpressionContext context = new ExpressionContext();
             context.Variables.Add("a", "abc");
 
-            new DynamicExpression("a.m_length", ExpressionLanguage.Flee).Bind(context);
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                new DynamicExpression("a.m_length", ExpressionLanguage.Flee).Bind(context);
+            });
         }
 
         [Test(Description = "We should not compile an expression that accesses a non-public field with the same name as a variable")]

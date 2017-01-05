@@ -127,12 +127,14 @@ namespace Expressions.Test.CsharpLanguage.ExpressionTests
         }
 
         [Test]
-        [ExpectedException]
         public void CastingToUnknownType()
         {
-            Resolve(
-                "(Unknown.Type)null"
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    "(Unknown.Type)null"
+                );
+            });
         }
     }
 }

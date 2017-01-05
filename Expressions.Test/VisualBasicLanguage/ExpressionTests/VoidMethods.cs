@@ -9,13 +9,15 @@ namespace Expressions.Test.VisualBasicLanguage.ExpressionTests
     internal class VoidMethods : TestBase
     {
         [Test]
-        [ExpectedException]
         public void VoidMethodsAreInvisible()
         {
-            Resolve(
-                new ExpressionContext(null, new Owner()),
-                "VoidMethod()"
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    new ExpressionContext(null, new Owner()),
+                    "VoidMethod()"
+                );
+            });
         }
 
         public class Owner

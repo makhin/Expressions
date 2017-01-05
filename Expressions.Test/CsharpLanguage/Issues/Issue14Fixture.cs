@@ -10,14 +10,16 @@ namespace Expressions.Test.CsharpLanguage.Issues
     internal class Issue14Fixture : TestBase
     {
         [Test]
-        [ExpectedException(typeof(ExpressionsException))]
         public void Test()
         {
             string translatedString = "uppercase(\"hello\")";
             var expr = new DynamicExpression(translatedString, ExpressionLanguage.Csharp);
             var context = new ExpressionContext(null, new CustomOwner(), true);
             var boundExpression = expr.Bind(context);
-            object res = boundExpression.Invoke();
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                object res = boundExpression.Invoke();
+            });
         }
 
         public class CustomOwner

@@ -17,12 +17,14 @@ namespace Expressions.Test.FleeLanguage.Parsing
         }
 
         [Test]
-        [ExpectedException]
         public void InvalidSyntaxCheck()
         {
-            DynamicExpression.CheckSyntax(
-                "?", ExpressionLanguage.Flee
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                DynamicExpression.CheckSyntax(
+                    "?", ExpressionLanguage.Flee
+                );
+            });
         }
     }
 }

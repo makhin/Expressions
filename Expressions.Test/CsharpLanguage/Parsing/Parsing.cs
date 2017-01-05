@@ -17,12 +17,14 @@ namespace Expressions.Test.CsharpLanguage.Parsing
         }
 
         [Test]
-        [ExpectedException]
         public void InvalidSyntaxCheck()
         {
-            DynamicExpression.CheckSyntax(
-                "?", ExpressionLanguage.Csharp
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                DynamicExpression.CheckSyntax(
+                    "?", ExpressionLanguage.Csharp
+                );
+            });
         }
     }
 }

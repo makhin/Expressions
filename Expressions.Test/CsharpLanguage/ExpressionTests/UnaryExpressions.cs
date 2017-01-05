@@ -31,22 +31,27 @@ namespace Expressions.Test.CsharpLanguage.ExpressionTests
             );
         }
 
-        [Test]
-        [ExpectedException]
+        [Test]        
         public void IllegalUnaryPlus()
         {
-            Resolve(
-                "+\"\""
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+
+                Resolve(
+                    "+\"\""
+                );
+            });
         }
 
         [Test]
-        [ExpectedException]
         public void IllegalUnaryMinus()
         {
-            Resolve(
-                "-\"\""
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    "-\"\""
+                );
+            });
         }
 
         [Test]
@@ -63,12 +68,14 @@ namespace Expressions.Test.CsharpLanguage.ExpressionTests
         }
 
         [Test]
-        [ExpectedException]
         public void IllegalUnaryNot()
         {
-            Resolve(
-                "!\"\""
-            );
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve(
+                    "!\"\""
+                );
+            });
         }
     }
 }

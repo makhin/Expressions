@@ -57,10 +57,12 @@ namespace Expressions.Test.FleeLanguage.Compilation
         }
 
         [Test]
-        [ExpectedException]
         public void CastWithBuiltInString()
         {
-            Resolve("cast(7, string)");
+            Assert.Throws(typeof(ExpressionsException), delegate
+            {
+                Resolve("cast(7, string)");
+            });
         }
 
         [Test]
