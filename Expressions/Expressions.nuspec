@@ -14,6 +14,6 @@
     <tags>expressions parser compiler msil c# vb vb.net flee visualbasic</tags>
   </metadata>
   <files>
-    <file src="bin\Release\Expressions.xml" target="lib\net20" />
+    <file src="bin\Release\Expressions.xml" target="lib\net45" />
   </files>
 </package>

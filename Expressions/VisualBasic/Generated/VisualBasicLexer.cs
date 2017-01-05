@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.4.1.9004 C:\\Users\\Alexandr\\Sources\\Repos\\Expressions\\Expressions\\VisualBasic\\VisualBasic.g 2017-01-05 07:21:15
+// $ANTLR 3.4.1.9004 C:\\Users\\Alexandr\\Sources\\Repos\\Expressions\\Expressions\\VisualBasic\\VisualBasic.g 2017-01-05 07:49:03
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
